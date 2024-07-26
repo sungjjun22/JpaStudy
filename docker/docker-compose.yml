@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  db: # db 서비스
+    container_name: h2 # 컨테이너 이름
+    image: oscarfonts/h2:latest # h2 이미지
+    ports: # 포트포워딩
+      - 1521:1521 # TCP 포트 : 데이터베이스 연결 포트
+    environment: #h2 설정
+      H2_OPTIONS: -ifNotExists # DB가 이미 존재하면 재생성 X
+    volumes:
+      - ./h2/:/opt/h2-data # host 서버와 연결되는 통로 ( 저장 및 백업 경로 )
